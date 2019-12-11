@@ -9,7 +9,7 @@ A proxy that upgrades HTTP connections to HTTPS for systems which cannot make HT
 ./http-to-https-proxy 
 2019/11/03 22:54:50 Starting HTTP to HTTPS proxy listening to 80, forward to 443 with listening buffer 5000
 2019/11/03 22:54:50 You can supply the listening and forwarding port and buffer size as 3 command line arguments
-2019/11/03 22:54:51 Received request to route to host ABC.com and path /api/endpoint
+2019/11/03 22:54:51 Received request to route to host ABC.com and url /api/endpoint
 2019/11/03 22:54:52 End of handler
 ...
 ```

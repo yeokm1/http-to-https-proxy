@@ -16,8 +16,8 @@ var httpsConnectingPort = 443
 func handler(responseToRequest http.ResponseWriter, incomingRequest *http.Request) {
 
 	host := incomingRequest.Host
-	path := incomingRequest.URL
-	log.Printf("Received request to route to host %s and path %s", host, path)
+	url := incomingRequest.URL
+	log.Printf("Received request to route to host %s and url %s", host, url)
 
 	// Get the raw request bytes
 	requestDump, err := httputil.DumpRequest(incomingRequest, true)
