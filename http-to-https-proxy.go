@@ -26,6 +26,8 @@ func handler(responseToRequest http.ResponseWriter, incomingRequest *http.Reques
 		http.Error(responseToRequest, "Cannot dump request", http.StatusBadRequest)
 	}
 
+	// ioutil.WriteFile("input.txt", requestDump, 0644)
+
 	// You can uncomment to view the raw http request for debugging
 	//log.Printf("Dump:\n%s", string(requestDump))
 
@@ -78,12 +80,10 @@ func handler(responseToRequest http.ResponseWriter, incomingRequest *http.Reques
 
 		bytesWritten, err := returnConn.Write(readBuf[:bytesRead])
 
+		// ioutil.WriteFile("output.txt", readBuf[:bytesRead], 0644)
+
 		if err != nil {
 			log.Printf("Error writing bytes to requester %d %s", bytesWritten, err)
-			break
-		}
-
-		if bytesRead < proxyBufferSize {
 			break
 		}
 
