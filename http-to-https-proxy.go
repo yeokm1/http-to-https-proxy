@@ -80,7 +80,7 @@ func handler(responseToRequest http.ResponseWriter, incomingRequest *http.Reques
 
 		bytesWritten, err := returnConn.Write(readBuf[:bytesRead])
 
-		// ioutil.WriteFile("output.txt", readBuf[:bytesRead], 0644)
+		//ioutil.WriteFile("output.txt", readBuf[:bytesRead], 0644)
 
 		if err != nil {
 			log.Printf("Error writing bytes to requester %d %s", bytesWritten, err)
