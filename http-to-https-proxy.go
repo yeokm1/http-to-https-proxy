@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/tls"
+	"io"
 	"log"
 	"net/http"
 	"net/http/httputil"
@@ -26,7 +27,7 @@ func handler(responseToRequest http.ResponseWriter, incomingRequest *http.Reques
 		http.Error(responseToRequest, "Cannot dump request", http.StatusBadRequest)
 	}
 
-	// ioutil.WriteFile("input.txt", requestDump, 0644)
+	//ioutil.WriteFile("input.txt", requestDump, 0644)
 
 	// You can uncomment to view the raw http request for debugging
 	//log.Printf("Dump:\n%s", string(requestDump))
@@ -74,7 +75,13 @@ func handler(responseToRequest http.ResponseWriter, incomingRequest *http.Reques
 		bytesRead, err := conn.Read(readBuf)
 
 		if err != nil {
-			log.Printf("Error getting bytes from server %d %s", bytesRead, err)
+
+			if err == io.EOF {
+				log.Printf("EOF reached")
+			} else {
+				log.Printf("Error getting bytes from server %d %s", bytesRead, err)
+			}
+
 			break
 		}
 
