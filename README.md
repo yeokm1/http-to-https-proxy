@@ -19,7 +19,7 @@ By default, proxy will listen to HTTP requests on port `80` and retransmit HTTPS
 ### Modify ports and buffer size
 
 ```bash
-go run http-to-https-proxy.go 90 445 5000
+./http-to-https-proxy 90 445 5000
 2019/11/03 22:56:05 HTTP to HTTPS proxy v0.2 listening to 90, forward to 445 with listening buffer 5000
 2019/11/03 22:56:05 You can supply the listening and forwarding port and buffer size as 3 command line arguments
 ...
