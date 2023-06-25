@@ -3,6 +3,8 @@ A proxy that upgrades HTTP connections to HTTPS for systems which cannot make HT
 
 ## Running the proxy
 
+Download the latest binary corresponding to your platfrom from the [releases section](https://github.com/yeokm1/http-to-https-proxy/releases/).
+
 ### Default Configuration
 
 ```bash
@@ -36,38 +38,4 @@ If the server you are connecting to is using expired/insecure TLS certificates. 
 
 # Compiling
 
-Just install the latest Go compiler for your platform. The latest at the time of writing is `1.20.2`. THe following was compiled on windows/amd64 platform using Powershell
-
-```bash
-$env:GOOS="windows"
-$env:GOARCH="amd64"
-go build http-to-https-proxy.go
-
-$env:GOOS="windows"
-$env:GOARCH="386"
-go build http-to-https-proxy.go
-
-$env:GOOS="darwin"
-$env:GOARCH="amd64"
-go build http-to-https-proxy.go
-
-$env:GOOS="darwin"
-$env:GOARCH="arm64"
-go build http-to-https-proxy.go
-
-$env:GOOS="linux"
-$env:GOARCH="amd64"
-go build http-to-https-proxy.go
-
-$env:GOOS="linux"
-$env:GOARCH="arm"
-go build http-to-https-proxy.go
-
-$env:GOOS="linux"
-$env:GOARCH="arm64"
-go build http-to-https-proxy.go
-
-$env:GOOS="linux"
-$env:GOARCH="riscv64"
-go build http-to-https-proxy.go
-```
+Just install the latest Go compiler for your platform. The latest at the time of writing is `1.20.5`. THe following was compiled on windows/amd64 platform using Powershell script `build.ps1`.

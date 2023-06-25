@@ -10,7 +10,7 @@ import (
 	"strconv"
 )
 
-var versionCode = "v0.2"
+var versionCode = "v0.3"
 var proxyBufferSize = 4096
 var httpListenPort = 80
 var httpsConnectingPort = 443
@@ -20,7 +20,9 @@ func handler(responseToRequest http.ResponseWriter, incomingRequest *http.Reques
 
 	host := incomingRequest.Host
 	url := incomingRequest.URL
-	log.Printf("Received request to route to host %s and url %s", host, url)
+	remote := incomingRequest.RemoteAddr
+
+	log.Printf("Request from %s to host %s and url %s", remote, host, url)
 
 	// Get the raw request bytes
 	requestDump, err := httputil.DumpRequest(incomingRequest, true)
@@ -111,7 +113,7 @@ func main() {
 	argsWithoutProg := os.Args[1:]
 
 	for _, arg := range os.Args[1:] {
-		if arg == "-i"{
+		if arg == "-i" {
 			allowInsecure = true
 		}
 	}
@@ -144,11 +146,11 @@ func main() {
 	}
 
 	log.Printf("HTTP to HTTPS proxy %s listening to %d, forward to %d with listening buffer %d", versionCode, httpListenPort, httpsConnectingPort, proxyBufferSize)
-	
+
 	if allowInsecure {
 		log.Printf("Allow insecure TLS certificates")
 	}
-	
+
 	log.Printf("You can supply the listening port, forward port, buffer size, insecure -i cert as command line args")
 
 	http.HandleFunc("/", handler)
