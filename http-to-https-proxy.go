@@ -8,6 +8,7 @@ import (
 	"net/http/httputil"
 	"os"
 	"strconv"
+	"strings"
 )
 
 var versionCode = "v0.3"
@@ -44,7 +45,7 @@ func handler(responseToRequest http.ResponseWriter, incomingRequest *http.Reques
 		}
 	}
 
-	conn, err := tls.Dial("tcp", host+":"+strconv.Itoa(httpsConnectingPort), conf)
+	conn, err := tls.Dial("tcp", strings.Split(host, ":")[0]+":"+strconv.Itoa(httpsConnectingPort), conf)
 	if err != nil {
 		log.Printf("Cannot dial host %s", err)
 		http.Error(responseToRequest, "Cannot dial host", http.StatusGatewayTimeout)
